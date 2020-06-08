@@ -5,8 +5,10 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = 'random string'
 UPLOAD_FOLDER = 'static/uploads'
+AZURE_CDN_ENDPOINT = 'https://ecommercecdnendpoint.azureedge.net/'
 ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.static_url_path = AZURE_CDN_ENDPOINT
 
 def getLoginDetails():
     with sqlite3.connect('database.db') as conn:
